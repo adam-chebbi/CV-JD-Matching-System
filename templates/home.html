@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Matcher - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <h1>CV Matcher</h1>
+        <button id="nav-toggle">☰</button>
+        <ul id="nav-menu" class="nav-list">
+            <li><a href="#upload-section">Upload</a></li>
+            <li><a href="/manage">Manage Data</a></li>
+        </ul>
+    </nav>
+
+    <!-- Upload Section -->
+    <section id="upload-section">
+        <h2>Upload CVs and Job Description</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <label for="cvs">Upload CVs (PDF/DOCX):</label>
+            <input type="file" id="cvs" name="cvs" multiple required><br><br>
+            
+            <label for="jd">Upload Job Description (PDF/DOCX):</label>
+            <input type="file" id="jd" name="jd" required><br><br>
+            
+            <button type="submit">Compute Match</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 CV Matcher. All rights reserved Adam Chebbi.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

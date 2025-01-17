@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Job Description</title>
+</head>
+<body>
+    <h1>Select a Job Description</h1>
+    <form method="get" action="/filter_results">
+        <label for="jd_id">Choose a Job Description:</label>
+        <select id="jd_id" name="jd_id">
+            {% for jd in jds %}
+                <option value="{{ jd[0] }}">{{ jd[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">View Results</button>
+    </form>
+</body>
+</html>
