@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS job_descriptions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename TEXT NOT NULL,
+    content TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS cvs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename TEXT NOT NULL,
+    content TEXT NOT NULL,
+    jd_id INTEGER NOT NULL,
+    similarity_score REAL NOT NULL,
+    FOREIGN KEY (jd_id) REFERENCES job_descriptions (id)
+);

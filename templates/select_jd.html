@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Job Description</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Select a Job Description</h1>
-    <form method="get" action="/filter_results">
-        <label for="jd_id">Choose a Job Description:</label>
-        <select id="jd_id" name="jd_id">
-            {% for jd in jds %}
+    <!-- Navigation -->
+    <nav>
+        <h1>CV Matcher</h1>
+        <button id="nav-toggle">☰</button>
+        <ul id="nav-menu" class="nav-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/manage">Manage Data</a></li>
+        </ul>
+    </nav>
+
+    <!-- Select JD Section -->
+    <section>
+        <h2>Select a Job Description</h2>
+        <form method="get" action="/filter_results">
+            <label for="jd_id">Choose a JD:</label>
+            <select id="jd_id" name="jd_id" required>
+                {% for jd in jds %}
                 <option value="{{ jd[0] }}">{{ jd[1] }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">View Results</button>
-    </form>
+                {% endfor %}
+            </select>
+            <button type="submit">View Matches</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CV Matcher. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>

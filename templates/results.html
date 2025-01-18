@@ -4,36 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Results</h1>
-    
-    <h2>Filter and Sort</h2>
-    <form method="get" action="/filter_results">
-        <label for="min_score">Minimum Similarity Score:</label>
-        <input type="number" id="min_score" name="min_score" step="0.1" min="0" max="1" value="0">
-        <button type="submit">Apply Filter</button>
-    </form>
-    
-    <h2>Similarity Scores</h2>
-    <table>
-        <tr>
-            <th>CV</th>
-            <th>Similarity Score</th>
-        </tr>
-        {% for cv, score in scores %}
-        <tr>
-            <td>{{ cv }}</td>
-            <td>{{ score }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
-    <h2>Visualizations</h2>
-    <div>
-        <img src="{{ charts[0] }}" alt="Similarity Bar Chart">
-        <img src="{{ charts[1] }}" alt="Similarity Histogram">
-        <img src="{{ charts[2] }}" alt="Similarity Pie Chart">
-    </div>
+    <!-- Navigation -->
+    <nav>
+        <h1>CV Matcher</h1>
+        <button id="nav-toggle">☰</button>
+        <ul id="nav-menu" class="nav-list">
+            <li><a href="/">Upload</a></li>
+            <li><a href="/manage">Manage Data</a></li>
+        </ul>
+    </nav>
+
+    <!-- Results Section -->
+    <section>
+        <h2>Results</h2>
+
+        <!-- Filter Results -->
+        <div>
+            <label for="filter-input">Filter by Minimum Similarity Score:</label>
+            <input type="number" id="filter-input" step="0.1" min="0" max="1" placeholder="Enter minimum score">
+        </div>
+
+        <!-- Results Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>CV</th>
+                    <th>Similarity Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cv, score in scores %}
+                <tr class="cv-row" data-score="{{ score }}">
+                    <td>{{ cv }}</td>
+                    <td>{{ score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Visualizations -->
+        <h3>Visualizations</h3>
+        <div>
+            <img src="{{ charts[0] }}" alt="Similarity Bar Chart">
+            <img src="{{ charts[1] }}" alt="Similarity Histogram">
+            <img src="{{ charts[2] }}" alt="Similarity Pie Chart">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CV Matcher. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
