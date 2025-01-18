@@ -5,6 +5,5 @@ nltk
 scikit-learn
 matplotlib
 sentence-transformers
-sqlite3
 pandas
 gunicorn
