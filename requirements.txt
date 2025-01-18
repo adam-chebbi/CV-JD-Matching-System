@@ -6,8 +6,5 @@ scikit-learn
 matplotlib
 sentence-transformers
 sqlite3
-<<<<<<< HEAD
 pandas
-=======
 gunicorn
->>>>>>> 5973ec03191a32e8e51cb4290b36974e76168f92
